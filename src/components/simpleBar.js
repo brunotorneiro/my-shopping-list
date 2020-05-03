@@ -1,7 +1,7 @@
 import React from 'react'
-import { addItem } from '../reducers/changeList'
+import { addItem } from '../actions/listAction'
 import { useDispatch, useSelector } from 'react-redux'
-import { setQtd, setPrice, setProduct } from '../reducers/itemAction'
+import { setQtd, setPrice, setProduct } from '../actions/itemAction'
 
 function SimpleBar() {
     const item = useSelector(state => {

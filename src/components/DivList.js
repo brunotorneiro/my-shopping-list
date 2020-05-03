@@ -1,6 +1,6 @@
 import React from 'react'
 import { myBRL } from '../fuctionsLists'
-import { editItem } from '../reducers/itemAction'
+import { editItem } from '../actions/itemAction'
 import { useSelector, useDispatch } from 'react-redux'
 
 function DivList() {

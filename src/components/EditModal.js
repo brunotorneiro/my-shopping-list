@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setProduct, setQtd, setPrice } from '../reducers/itemAction'
-import { editList } from '../reducers/changeList'
+import { setProduct, setQtd, setPrice } from '../actions/itemAction'
+import { editList } from '../actions/listAction'
 
 function EditModal() {
     let item = useSelector(state => state.item)
