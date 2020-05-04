@@ -24,7 +24,7 @@ function EditModal() {
 
     function editListOnClick(e) {
         e.preventDefault()
-        return dispatch(editList(item))
+        dispatch(editList(item))
     }
 
     return (
@@ -43,9 +43,9 @@ function EditModal() {
                 </div>
                         <div className='simple-bar m-2'>
                             <form>
-                                <input type='text' onChange={productEditChange} placeholder={item.product}></input>
-                                <input type='number' onChange={qtdEditChange} placeholder={item.qtd}></input>
-                                <input type='text' onChange={priceEditChange} placeholder={item.price}></input>
+                                <input type='text' onChange={productEditChange} value={item.product}></input>
+                                <input type='number' onChange={qtdEditChange} value={item.qtd}></input>
+                                <input type='text' onChange={priceEditChange} value={item.price}></input>
                                 <button className='btn btn-outline-success btn-lg' onClick={editListOnClick} data-dismiss="modal">Alterar</button>
                             </form>
                         </div>

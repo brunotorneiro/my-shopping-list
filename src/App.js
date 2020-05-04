@@ -17,16 +17,14 @@ function App() {
   return (
     <div className="App">
       <Provider store={myStore}>
-        <div className='container'>
+        <div className='container-fluid'>
           <MyModal><SimpleBar></SimpleBar></MyModal>
-          <EditModal><SimpleBar></SimpleBar></EditModal>
-          <div className="">
-            <TotalBar></TotalBar>
-            <MyBody></MyBody>
-          </div>
-
         </div>
-
+        <EditModal></EditModal>
+        <div className="container">
+          <TotalBar></TotalBar>
+          <MyBody></MyBody>
+        </div>
       </Provider>
     </div>
   );
