@@ -1,5 +1,5 @@
 import React from 'react'
-import { addItem } from '../redux/listAction'
+import { addItem, editList } from '../redux/listAction'
 import { useDispatch, useSelector } from 'react-redux'
 import { setQtd, setPrice, setProduct, editItem } from '../redux/itemAction'
 
@@ -28,17 +28,20 @@ function MyForm() {
     function addOrEditItemOnClick(e) {
         e.preventDefault()
         if (modal.type === 'ADD_MODAL') {
-           return dispatch(addItem(item)) 
+           dispatch(addItem(item))
+           dispatch(editItem({})) 
         }else if (modal.type === 'EDIT_MODAL'){
-            return dispatch(editItem(item))
+            console.log(item)
+            dispatch(editList(item))
+            dispatch(editItem({}))
         }
         
     }
 
     return (
-        <div className='simple-bar m-2'>
+        <div className='my-form m-2'>
             <form>
-                <input placeholder='Produto' onChange={productChange} type='text'></input>
+                <input placeholder='Produto' onChange={productChange} type='text'value={item.product}></input>
                 <input placeholder='Quantidade' onChange={qtdChange} type='number'></input>
                 <input placeholder='Preço' onChange={priceChange} type='text'></input>
                 <button className='btn btn-outline-success btn-lg' onClick={addOrEditItemOnClick} data-dismiss="modal">{modal.button}</button>

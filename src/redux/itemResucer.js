@@ -1,5 +1,4 @@
-const intialItem = {}
-const ItemReducer = (state = intialItem, action) => {
+const ItemReducer = (state = {}, action) => {
     switch (action.type) {
         case 'PRODUCT':
             state.product = action.payload

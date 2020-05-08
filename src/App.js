@@ -6,9 +6,9 @@ import listReducer from './redux/listReducer'
 import ItemReducer from './redux/itemResucer';
 import modalReducer from './redux/modalReducer';
 import TotalBar from './components/TotalBar'
-import MyBody from './components/MyBody';
-import SimpleBar from './components/MyForm';
 import MyModal from './components/MyModal';
+import MyForm from './components/MyForm';
+import DivList from './components/DivList';
 
 const allReducers = combineReducers({
   list: listReducer,
@@ -22,11 +22,13 @@ function App() {
     <div className="App">
       <Provider store={myStore}>
         <div className='container-fluid'>
-          <MyModal><SimpleBar></SimpleBar></MyModal>
+          <MyModal />
         </div>
         <div className="container">
-          <TotalBar></TotalBar>
-          <MyBody></MyBody>
+          <TotalBar>
+            <MyForm />
+          </TotalBar>
+          <DivList />
         </div>
       </Provider>
     </div>
