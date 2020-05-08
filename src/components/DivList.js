@@ -1,7 +1,8 @@
 import React from 'react'
 import { myBRL } from '../fuctionsLists'
-import { editItem } from '../actions/itemAction'
+import { editItem } from '../redux/itemAction'
 import { useSelector, useDispatch } from 'react-redux'
+import { modalEdit } from '../redux/modalAction'
 
 function DivList() {
   const dispatch = useDispatch()
@@ -11,6 +12,7 @@ function DivList() {
     const id = e.target.parentElement.id
     let line = list.filter(line => line.id.toString() === id)[0]
     console.log(line)
+    dispatch(modalEdit)
     dispatch(editItem(line))
   }
 
@@ -26,7 +28,7 @@ function DivList() {
       </thead>
       <tbody>{list.map((line) => {
         return (
-          <tr id={line.id} onClick={setItem} key={line.id} data-toggle="modal" data-target="#editItem">
+          <tr id={line.id} onClick={setItem} key={line.id} data-toggle="modal" data-target="#my-modal">
             <td className="align-middle">{line.product}</td>
             <td className="align-middle text-center">{line.qtd}</td>
             <td className="align-middle text-right">{myBRL(line.price)}</td>

@@ -1,11 +1,11 @@
 import React from 'react'
-import { addItem } from '../actions/listAction'
+import { addItem } from '../redux/listAction'
 import { useDispatch, useSelector } from 'react-redux'
-import { setQtd, setPrice, setProduct } from '../actions/itemAction'
+import { setQtd, setPrice, setProduct, editItem } from '../redux/itemAction'
 
-function SimpleBar() {
-    const item = useSelector(state => {
-        return state.item
+function MyForm() {
+    const [item, modal] = useSelector(state => {
+        return [state.item, state.modal]
     })
     
     const dispatch = useDispatch()
@@ -25,9 +25,14 @@ function SimpleBar() {
         dispatch(setPrice(value))
     }
 
-    function addItemOnClick(e) {
+    function addOrEditItemOnClick(e) {
         e.preventDefault()
-        return dispatch(addItem(item))
+        if (modal.type === 'ADD_MODAL') {
+           return dispatch(addItem(item)) 
+        }else if (modal.type === 'EDIT_MODAL'){
+            return dispatch(editItem(item))
+        }
+        
     }
 
     return (
@@ -36,10 +41,10 @@ function SimpleBar() {
                 <input placeholder='Produto' onChange={productChange} type='text'></input>
                 <input placeholder='Quantidade' onChange={qtdChange} type='number'></input>
                 <input placeholder='Preço' onChange={priceChange} type='text'></input>
-                <button className='btn btn-outline-success btn-lg' onClick={addItemOnClick} data-dismiss="modal">Incluir</button>
+                <button className='btn btn-outline-success btn-lg' onClick={addOrEditItemOnClick} data-dismiss="modal">{modal.button}</button>
             </form>
         </div>
     )
 }
 
-export default SimpleBar
+export default MyForm

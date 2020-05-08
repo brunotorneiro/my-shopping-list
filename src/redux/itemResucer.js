@@ -11,7 +11,7 @@ const ItemReducer = (state = intialItem, action) => {
         case 'PRICE':
             state.price = Number(action.payload)
             return state
-        case 'EDIT':
+        case 'EDIT_ITEM':
             return action.item
         default:
             return state;

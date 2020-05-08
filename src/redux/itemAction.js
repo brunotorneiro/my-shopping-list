@@ -17,5 +17,5 @@ export const setPrice = (price) => {
 }
 
 export const editItem = item => {
-    return { type: 'EDIT', item }
+    return { type: 'EDIT_ITEM', item }
 }
