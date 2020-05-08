@@ -1,6 +1,6 @@
 export const setProduct = (product) => {
     return (        
-        { type: 'PRODUCT', payload: product }
+        { type: 'PRODUCT', payload: String(product).toUpperCase }
     )
 }
 
@@ -10,9 +10,14 @@ export const setQtd = (qtd) => {
     )
 }
 
-export const setPrice = (price) => {
+export const setPriceOnChange = (price) => {
     return (
         { type: 'PRICE', payload: price }
+    )
+}
+export const setPriceOnPress = (price) => {
+    return (
+        { type: 'PRICE_ON_PRESS', payload: price }
     )
 }
 

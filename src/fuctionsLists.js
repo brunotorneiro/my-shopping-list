@@ -17,29 +17,3 @@ export const myBRL = (number) => {
         return number
     }
 }
-
-export const MyMap = (state, action) => {
-    return (state.map(it => {
-        if (it.id.toString() === action.item.id) {
-            switch (action.type) {
-                case 'EDIT_PRODUCT':
-                    it.product = action.item.product
-                    break;
-
-                case 'EDIT_QTD':
-                    it.qtd = action.item.qtd
-                    break;
-
-                case 'EDIT_PRICE':
-                    it.price = action.item.price
-                    break;
-
-                default:
-                    break;
-            }
-
-        }
-        return it
-    })
-    )
-}

@@ -11,6 +11,7 @@ function DivList() {
   function setItem(e) {
     const id = e.target.parentElement.id
     let line = list.filter(line => line.id.toString() === id)[0]
+    line.price = Number(line.price).toFixed(2)
     dispatch(modalEdit)
     dispatch(editItem(line))
   }
@@ -28,7 +29,7 @@ function DivList() {
       <tbody>{list.map((line) => {
         return (
           <tr id={line.id} onClick={setItem} key={line.id} data-toggle="modal" data-target="#my-modal">
-            <td className="align-middle">{line.product}</td>
+            <td className="align-middle">{String(line.product).toUpperCase()}</td>
             <td className="align-middle text-center">{line.qtd}</td>
             <td className="align-middle text-right">{myBRL(line.price)}</td>
             <td className="align-middle text-right">{myBRL(line.qtd * line.price)}</td>

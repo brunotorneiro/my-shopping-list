@@ -1,7 +1,7 @@
 import React from 'react'
 import { addItem, editList } from '../redux/listAction'
 import { useDispatch, useSelector } from 'react-redux'
-import { setQtd, setPrice, setProduct, editItem } from '../redux/itemAction'
+import { setQtd, setProduct, editItem, setPriceOnChange, setPriceOnPress } from '../redux/itemAction'
 
 function MyForm() {
     const [item, modal] = useSelector(state => {
@@ -22,7 +22,13 @@ function MyForm() {
 
     function priceChange(e) {
         let value = e.target.value
-        dispatch(setPrice(value))
+        console.log(String(value))
+        dispatch(setPriceOnChange({ value, type: modal.type }))
+    }
+
+    function pricePress(e) {
+        let value = e.target.value
+        dispatch(setPriceOnPress({ value, type: modal.type }))
     }
 
     function addOrEditItemOnClick(e) {
@@ -46,7 +52,7 @@ function MyForm() {
             <form id='my-form'>
                 <input placeholder='Produto' onChange={productChange} type='text' value={item.product}></input>
                 <input placeholder='Quantidade' onChange={qtdChange} type='number' value={item.qtd}></input>
-                <input placeholder='Preço' onChange={priceChange} type='text' value={item.price}></input>
+                <input placeholder='Preço' onChange={priceChange} onKeyDown={pricePress} type='text' value={item.price}></input>
                 <button className='btn btn-outline-success btn-lg' onClick={addOrEditItemOnClick} data-dismiss="modal">{modal.button}</button>
             </form>
         </div>

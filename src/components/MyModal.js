@@ -1,11 +1,19 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { modalAdd } from '../redux/modalAction';
+import { editItem } from '../redux/itemAction'
 import MyForm from './MyForm';
 
 function MyModal(props) {
     const modal = useSelector(state => state.modal)
     const dispatch = useDispatch()
+    const clear = () => {
+        let myInputs = document.getElementById('my-form').children
+        for (let input of myInputs) {
+            input.value = ''
+        }
+        dispatch(editItem({}))
+    }
     return (
         <div>
             <div className='row bg-dark text-light justify-content-between p-3'>
@@ -21,7 +29,7 @@ function MyModal(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title col-9" id="exampleModalLabel">{modal.title}</h5>
-                            <button type="button" className="close col-3" data-dismiss="modal" aria-label="Close">
+                            <button onClick={clear} type="button" className="close col-3" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -29,7 +37,7 @@ function MyModal(props) {
                             {modal.description}
                         </div>
                         <div className="modal-footer">
-                            <MyForm/>
+                            <MyForm />
                         </div>
 
                     </div>

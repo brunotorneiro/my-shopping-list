@@ -1,5 +1,4 @@
 let first = true
-let teste = 0
 const ItemReducer = (state = {}, action) => {
     switch (action.type) {
         case 'PRODUCT':
@@ -7,31 +6,26 @@ const ItemReducer = (state = {}, action) => {
             return state
         case 'QTD':
             if (isNaN(action.payload)) {
-                action.payload = '0.00'
+                action.payload = ''
             }
             state.qtd = Number(action.payload)
             return state
         case 'PRICE':
-            if (isNaN(action.payload)) {
-                action.payload = '0.00'
+            if (isNaN(action.payload.value)) {
+                action.payload.value = (0).toFixed(2)
             }
-            if (first === true) {
-                state.price = (Number(action.payload) / 100)
+            if (first === true && action.payload.type ==='ADD_MODAL') {
+                state.price = (Number(action.payload.value) / 100).toFixed(2)
                 first = false
-                teste = state.price
-                console.log(teste)
             } else {
-                if (teste <= Number(action.payload)) {
-                    state.price = Number((action.payload * 10).toFixed(2))
-                    teste = Number(state.price)
-                    console.log(teste)
+                if (state.price > Number(action.payload.value) || String(action.payload.value).length === 4) {
+                    state.price = Number(((action.payload.value) / 10).toFixed(2))
                 } else {
-                    state.price = Number((action.payload / 10).toFixed(2))
-                    teste = Number(state.price)
-                    console.log(teste)
+                    state.price = Number(((action.payload.value) * 10).toFixed(2))
                 }
 
             }
+            state.price = Number(state.price).toFixed(2)
             return state
 
         case 'EDIT_ITEM':
