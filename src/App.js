@@ -7,7 +7,6 @@ import ItemReducer from './redux/itemResucer';
 import modalReducer from './redux/modalReducer';
 import TotalBar from './components/TotalBar'
 import MyModal from './components/MyModal';
-import MyForm from './components/MyForm';
 import DivList from './components/DivList';
 
 const allReducers = combineReducers({
@@ -22,12 +21,10 @@ function App() {
     <div className="App">
       <Provider store={myStore}>
         <div className='container-fluid'>
-          <MyModal />
+          <MyModal/>
         </div>
         <div className="container">
-          <TotalBar>
-            <MyForm />
-          </TotalBar>
+          <TotalBar />
           <DivList />
         </div>
       </Provider>

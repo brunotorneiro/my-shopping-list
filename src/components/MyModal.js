@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { modalAdd } from '../redux/modalAction';
+import MyForm from './MyForm';
 
 function MyModal(props) {
     const modal = useSelector(state => state.modal)
@@ -9,9 +10,9 @@ function MyModal(props) {
         <div>
             <div className='row bg-dark text-light justify-content-between p-3'>
                 <h3 className='col-10 align-self-center'>Lista</h3>
-                <button type="button" className="col-2 btn btn-outline-light btn-lg" 
-                onClick={()=>dispatch(modalAdd)}
-                data-toggle="modal" data-target="#my-modal">+</button>
+                <button type="button" className="col-2 btn btn-outline-light btn-lg"
+                    onClick={() => dispatch(modalAdd)}
+                    data-toggle="modal" data-target="#my-modal">+</button>
             </div>
 
 
@@ -27,7 +28,10 @@ function MyModal(props) {
                         <div className="modal-body">
                             {modal.description}
                         </div>
-                        {props.children}
+                        <div className="modal-footer">
+                            <MyForm/>
+                        </div>
+
                     </div>
                 </div>
             </div>

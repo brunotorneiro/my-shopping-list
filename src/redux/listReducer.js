@@ -8,7 +8,7 @@ const listReducer = (state = list, action) => {
         case 'EDIT_LIST':
             return (
                 state.map(it => {
-                    if (it.id.toString() === action.item.id) {
+                    if (it.id === action.item.id) {
                         it = { ...action.item }
                     }
                     return it

@@ -11,7 +11,6 @@ function DivList() {
   function setItem(e) {
     const id = e.target.parentElement.id
     let line = list.filter(line => line.id.toString() === id)[0]
-    console.log(line)
     dispatch(modalEdit)
     dispatch(editItem(line))
   }
